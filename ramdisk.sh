@@ -5,6 +5,10 @@ MOUNT_POINT=/mnt/ramdisk    # Mount point for the RAM disk
 # Source directory to sync to the RAM disk
 SOURCE_DIR=/mnt/pinokio/drive/drives/peers/d1740527291592
 
+# Green text variable
+GREEN="\e[32m"
+RESET="\e[0m"
+
 # Function to create the RAM disk
 create_ramdisk() {
     # Create the mount point directory if it doesn't exist
@@ -12,18 +16,18 @@ create_ramdisk() {
 
     # Mount the RAM disk
     mount -t tmpfs -o size=${SIZE_MB}M tmpfs $MOUNT_POINT
-    echo "RAM disk created at ${MOUNT_POINT} with size ${SIZE_MB}MB"
+    echo -e "${GREEN}RAM disk created at ${MOUNT_POINT} with size ${SIZE_MB}MB${RESET}"
 
     # Rsync the directory to the RAM disk, following symlinks
     rsync -aP --copy-links $SOURCE_DIR/* $MOUNT_POINT/.
-    echo "Directory ${SOURCE_DIR} synced to RAM disk at ${MOUNT_POINT}"
+    echo -e "${GREEN}Directory ${SOURCE_DIR} synced to RAM disk at ${MOUNT_POINT}${RESET}"
 
     # Rename the original directory
     mv $SOURCE_DIR ${SOURCE_DIR}.original
 
     # Create a new symlink pointing to the RAM disk
     ln -s $MOUNT_POINT $SOURCE_DIR
-    echo "Symlink ${SOURCE_DIR} now points to ${MOUNT_POINT}"
+    echo -e "${GREEN}Symlink ${SOURCE_DIR} now points to ${MOUNT_POINT}${RESET}"
 }
 
 # Function to undo the RAM disk
@@ -37,11 +41,11 @@ undo_ramdisk() {
 
     # Restore the original directory name
     mv ${SOURCE_DIR}.original $SOURCE_DIR
-    echo "Original directory ${SOURCE_DIR} has been restored"
+    echo -e "${GREEN}Original directory ${SOURCE_DIR} has been restored${RESET}"
 
     # Unmount the RAM disk
     umount $MOUNT_POINT
-    echo "RAM disk at ${MOUNT_POINT} unmounted"
+    echo -e "${GREEN}RAM disk at ${MOUNT_POINT} unmounted${RESET}"
 }
 
 # Check for command line argument
