@@ -19,7 +19,7 @@ create_ramdisk() {
     echo -e "${GREEN}RAM disk created at ${RAMDISK_MOUNT} with size ${SIZE_MB}MB${RESET}"
 
     # Rsync the directory to the RAM disk, following symlinks
-    rsync -avP --copy-links $SOURCE_DIR/* $RAMDISK_MOUNT/.
+    rsync -aP --sparse --copy-links $SOURCE_DIR/* $RAMDISK_MOUNT/.
     echo -e "${GREEN}Directory ${SOURCE_DIR} synced to RAM disk at ${RAMDISK_MOUNT}${RESET}"
 
     # Rename the original directory
