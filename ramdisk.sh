@@ -20,6 +20,10 @@ create_ramdisk() {
 
     # Rsync the directory to the RAM disk, following symlinks
     rsync -aP --sparse --copy-links $SOURCE_DIR/* $RAMDISK_MOUNT/.
+    if [ $? -ne 0 ]; then
+        echo -e "${GREEN}Rsync interrupted. Exiting...${RESET}"
+        exit 1
+    fi
     echo -e "${GREEN}Directory ${SOURCE_DIR} synced to RAM disk at ${RAMDISK_MOUNT}${RESET}"
 
     # Rename the original directory
