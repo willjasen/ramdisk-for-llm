@@ -1,9 +1,9 @@
 #!/bin/bash
 
-SIZE_MB=40960               # Size of the RAM disk in MB
-RAMDISK_MOUNT=/mnt/ramdisk    # Mount point for the RAM disk
+SIZE_MB=49152                   # Size of the RAM disk in MB (48 GB)
+RAMDISK_MOUNT=/mnt/ramdisk      # Mount point for the RAM disk
 # Source directory to sync to the RAM disk
-SOURCE_DIR=/mnt/sdc1/pinokio/drive/drives/peers/d1740527291592
+SOURCE_DIR=/mnt/pinokio/api/stable-diffusion-webui-forge.git/app/models/Stable-diffusion;
 
 # Text colors
 GREEN="\e[32m"
@@ -19,7 +19,7 @@ create_ramdisk() {
     echo -e "${GREEN}RAM disk created at ${RAMDISK_MOUNT} with size ${SIZE_MB}MB${RESET}"
 
     # Rsync the directory to the RAM disk, following symlinks
-    rsync -aP --sparse --copy-links $SOURCE_DIR/* $RAMDISK_MOUNT/.
+    rsync -aP --copy-links $SOURCE_DIR $RAMDISK_MOUNT
     if [ $? -ne 0 ]; then
         echo -e "${GREEN}Rsync interrupted. Exiting...${RESET}"
         exit 1
