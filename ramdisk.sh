@@ -5,7 +5,7 @@ RAMDISK_MOUNT=/mnt/ramdisk    # Mount point for the RAM disk
 # Source directory to sync to the RAM disk
 SOURCE_DIR=/mnt/sdc1/pinokio/drive/drives/peers/d1740527291592
 
-# Green text variable
+# Text colors
 GREEN="\e[32m"
 RESET="\e[0m"
 
