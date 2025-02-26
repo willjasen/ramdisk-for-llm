@@ -44,8 +44,8 @@ undo_ramdisk() {
     echo -e "${GREEN}Original directory ${SOURCE_DIR} has been restored${RESET}"
 
     # Unmount the RAM disk
-    umount $RAMDISK_MOUNT
-    echo -e "${GREEN}RAM disk at ${RAMDISK_MOUNT} unmounted${RESET}"
+    #umount $RAMDISK_MOUNT
+    #echo -e "${GREEN}RAM disk at ${RAMDISK_MOUNT} unmounted${RESET}"
 }
 
 # Check for command line argument
