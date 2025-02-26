@@ -37,7 +37,7 @@ undo_ramdisk() {
 
     # Restore the original directory name
     mv ${SOURCE_DIR}.original $SOURCE_DIR
-    echo "Original d irectory ${SOURCE_DIR} restored"
+    echo "Original directory ${SOURCE_DIR} has been restored"
 
     # Unmount the RAM disk
     umount $MOUNT_POINT
