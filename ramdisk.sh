@@ -15,7 +15,7 @@ create_ramdisk() {
     echo "RAM disk created at ${MOUNT_POINT} with size ${SIZE_MB}MB"
 
     # Rsync the directory to the RAM disk, following symlinks
-    rsync -aP --copy-links $SOURCE_DIR/ $MOUNT_POINT/
+    rsync -aP --copy-links $SOURCE_DIR/* $MOUNT_POINT/.
     echo "Directory ${SOURCE_DIR} synced to RAM disk at ${MOUNT_POINT}"
 
     # Rename the original directory
@@ -37,6 +37,7 @@ undo_ramdisk() {
 
     # Restore the original directory name
     mv ${SOURCE_DIR}.original $SOURCE_DIR
+    echo "Original d irectory ${SOURCE_DIR} restored"
 
     # Unmount the RAM disk
     umount $MOUNT_POINT
