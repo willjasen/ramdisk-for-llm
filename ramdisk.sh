@@ -19,7 +19,7 @@ create_ramdisk() {
     echo -e "${GREEN}RAM disk created at ${RAMDISK_MOUNT} with size ${SIZE_MB}MB${RESET}"
 
     # Rsync the directory to the RAM disk, following symlinks
-    rsync -aP --copy-links $SOURCE_DIR $RAMDISK_MOUNT
+    rsync -aP --copy-links $SOURCE_DIR/* $RAMDISK_MOUNT/.
     if [ $? -ne 0 ]; then
         echo -e "${GREEN}Rsync interrupted. Exiting...${RESET}"
         exit 1
