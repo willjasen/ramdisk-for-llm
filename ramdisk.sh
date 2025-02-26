@@ -26,6 +26,10 @@ create_ramdisk() {
     fi
     echo -e "${GREEN}Directory ${SOURCE_DIR} synced to RAM disk at ${RAMDISK_MOUNT}${RESET}"
 
+    # Calculate and output the total number of gigabytes copied
+    total_size=$(du -sh $RAMDISK_MOUNT | cut -f1)
+    echo -e "${GREEN}Total size of ${RAMDISK_MOUNT}: ${total_size}${RESET}"
+
     # Rename the original directory
     mv $SOURCE_DIR ${SOURCE_DIR}.original
 
