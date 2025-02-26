@@ -3,7 +3,7 @@
 SIZE_MB=40960               # Size of the RAM disk in MB
 RAMDISK_MOUNT=/mnt/ramdisk    # Mount point for the RAM disk
 # Source directory to sync to the RAM disk
-SOURCE_DIR=/mnt/pinokio/drive/drives/peers/d1740527291592
+SOURCE_DIR=/mnt/sdc1/pinokio/drive/drives/peers/d1740527291592
 
 # Green text variable
 GREEN="\e[32m"
